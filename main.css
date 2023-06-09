@@ -110,3 +110,13 @@
     color: #fff;
     font-weight: bold;
 }
+
+.dark {
+    background: #434343;
+    color: white;
+}
+.dark .row > div, .dark .pricing-card,
+.dark input, .dark textarea {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+}
