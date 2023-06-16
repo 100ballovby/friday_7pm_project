@@ -2,7 +2,7 @@
   "name": "friday_7pm_project",
   "version": "1.0.0",
   "description": "<p style=\"font-size: 18px\">Сайт с использованием технологий.</p> <ul style=\"font-size: 18px\">     <li>HTML</li>     <li>CSS</li>     <li>Bootstrap</li>     <li>JS</li> </ul>",
-  "main": "script.js",
+  "main": "frontend/script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
