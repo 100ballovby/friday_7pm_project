@@ -55,23 +55,23 @@
     <h1 class="text-center">Get in touch!</h1>
     <div class="row">
         <div class="col-lg-6 col-sm-6">
-            <form action="" class="contact-form">
+            <form action="/submit-form" class="contact-form">
                 <div class="form-group">
                     <label for="name" class="form-label">Your name</label>
-                    <input id="name" type="text" class="form-control">
+                    <input id="name" name="name" type="text" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="mail" class="form-label">Your email</label>
-                    <input id="mail" type="email" class="form-control">
+                    <input id="mail" name="mail" type="email" class="form-control">
                     <p class="text-muted">We'll never use your email for spam</p>
                 </div>
                 <div class="form-group">
                     <label for="subj" class="form-label">Subject</label>
-                    <input id="subj" type="text" class="form-control">
+                    <input id="subj" name="subj" type="text" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="msg" class="form-label">Message</label>
-                    <textarea id="msg" class="form-control"></textarea>
+                    <textarea id="msg" name="msg" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <input type="submit" style="width: 100%;" class="my-3 btn btn-lg btn-success" value="Send">
@@ -84,6 +84,13 @@
     </div>
 </main>
 
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+<script src="script.js"></script>
+<script src="static/contacts.js"></script>
+
 <script>
     const form = document.querySelector('.contact-form');
 
@@ -91,29 +98,32 @@
         e.preventDefault();
 
         const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const subject = document.getElementById('subject').value;
-        const message = document.getElementById('message').value;
+        const email = document.getElementById('mail').value;
+        const subject = document.getElementById('subj').value;
+        const message = document.getElementById('msg').value;
 
         const data = {
             name, email, subject, message
         };
 
-        fetch('/subject-form', {
+        fetch('/submit-form', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
         })
+            .then((response) => {
+                if (response.ok) {
+                    console.log('Form submitted successfully')
+                } else {
+                    console.error('Form submission failed.')
+                }
+            })
+            .catch((err) => {
+                console.error('An error occurred', err);
+            })
     })
 </script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
-<script src="script.js"></script>
-<script src="static/contacts.js"></script>
 </body>
 </html>
